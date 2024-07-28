@@ -6,11 +6,19 @@ body {
     background: #f5f5f5;
     color: #333;
     transition: background 0.3s, color 0.3s;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1; 
 }
 
 /* Ensure smooth scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 body.dark-mode {
@@ -261,6 +269,64 @@ body.dark-mode .back-to-top {
 
 body.dark-mode .back-to-top:hover {
     background-color: #ddd; 
+}
+
+/* Base scrollbar styles */
+:root {
+    --scrollbar-width: 12px;
+    --scrollbar-track-light: #d8d6d6;
+    --scrollbar-thumb-light: #888;
+    --scrollbar-thumb-hover-light: #555;
+
+    --scrollbar-track-dark: #333;
+    --scrollbar-thumb-dark: #666;
+    --scrollbar-thumb-hover-dark: #444;
+}
+
+/* Default (light mode) scrollbar styles */
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-light);
+}
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-light) var(--scrollbar-track-light);
+}
+
+/* Dark mode scrollbar styles */
+body.dark-mode {
+    --scrollbar-track-light: #333;
+    --scrollbar-thumb-light: #666;
+    --scrollbar-thumb-hover-light: #444;
+
+    scrollbar-color: var(--scrollbar-thumb-dark) var(--scrollbar-track-dark);
+}
+
+/* Specific dark mode scrollbar styles for Webkit browsers */
+body.dark-mode ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-dark);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-dark);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-dark);
 }
 
 /* Media Queries for Responsive Design */

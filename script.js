@@ -87,4 +87,5 @@ document.addEventListener('DOMContentLoaded', function () {
             behavior: 'smooth'
         });
     });
+    window.scrollTo(0, 0);
 });
