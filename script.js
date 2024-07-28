@@ -91,4 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('load', function () {
         window.scrollTo(0, 0);
     });
+    window.addEventListener('load', function() {
+        document.documentElement.scrollTop = 0;
+    });    
 });
