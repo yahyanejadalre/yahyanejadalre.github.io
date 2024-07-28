@@ -87,5 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
             behavior: 'smooth'
         });
     });
-    window.scrollTo(0, 0);
+
+    window.addEventListener('load', function () {
+        window.scrollTo(0, 0);
+    });
 });
