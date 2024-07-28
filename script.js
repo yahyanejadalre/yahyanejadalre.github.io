@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const navMenu = document.querySelector('.nav-list');
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     const body = document.body;
+    const navLinks = document.querySelectorAll('.nav-list li a');
+    const backToTopButton = document.getElementById('back-to-top');
 
     let menuVisible = false;
 
@@ -27,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Keep the menu open while hovering over the menu or toggle
     navMenu.addEventListener('mouseenter', function () {
         menuVisible = true;
         navMenu.classList.add('active');
@@ -48,5 +49,42 @@ document.addEventListener('DOMContentLoaded', function () {
             menuVisible = false;
             navMenu.classList.remove('active');
         }
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const offset = 100;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                menuVisible = false;
+                navMenu.classList.remove('active');
+            }
+        });
+    });
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+
+    backToTopButton.addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 });
